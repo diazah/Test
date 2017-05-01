@@ -10,9 +10,16 @@
     //init this script when the page has loaded
     $(document).ready(function(){
         
+        $("#submitbutton").on("click", function(){
+        //disable the button to prevent multiple clicks
+        $("#submitbutton").attr("disabled", "disabled");
+        
+        //read the value for 'myname'
+        var myname = $("#namefield").val();
+        
         //perform the request
-        var req = ocpu.rpc("helloIEEER", function(output){
-          $("#output").text(output);
+        var req = ocpu.rpc("helloIEEER",function(output){
+          $("#output").text(output.message);
         });
         
         //if R returns an error, alert the error message
@@ -24,6 +31,7 @@
         req.always(function(){
           $("#submitbutton").removeAttr("disabled")
         });
+      });
     });
     </script>
     

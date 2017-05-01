@@ -9,6 +9,8 @@ query <- list(au="Rabiner, L",pys=1970, pye=1970)
 count <- IEEE_count(query)
 library(jsonlite)
 reslt<-toJSON(count)
-return(reslt)
+list(
+  message = paste("the count  is ", reslt)
+)
 }
 
